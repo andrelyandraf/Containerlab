@@ -1,0 +1,19 @@
+name: srlceos01
+
+topology:
+  nodes:
+    ceos_sw01:
+      kind: arista_ceos
+      image: ceos:4.29.10M
+    ceos_sw02:
+      kind: arista_ceos
+      image: ceos:4.29.10M
+    ce_sw:
+      kind: arista_ceos
+      image: ceos:4.29.10M
+
+  links:
+    - endpoints: ["ceos_sw01:eth1", "ceos_sw02:eth1"]
+    - endpoints: ["ceos_sw01:eth2", "ceos_sw02:eth2"]
+    - endpoints: ["ce_sw:eth1", "ceos_sw01:eth5"]
+    - endpoints: ["ce_sw:eth2", "ceos_sw02:eth5"]
