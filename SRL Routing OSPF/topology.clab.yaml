@@ -1,11 +1,2 @@
 name: l3evpn
 prefix: __lab-name
-
-topology:
-  defaults:
-    kind: nokia_srlinux
-  kinds:
-    nokia_srlinux:
-      image: ghcr.io/nokia/srlinux:latest
-    linux:
-      image: quay.io/frrouting/frr:9.0.2
