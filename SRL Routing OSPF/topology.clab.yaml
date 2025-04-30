@@ -1,0 +1,16 @@
+name: LAYER2EVPN 
+
+topology:
+  nodes:
+    spine:
+      kind: nokia_srlinux
+      image: ghcr.io/nokia/srlinux
+      startup-config: config/spine.cfg
+    leaf1:
+      kind: nokia_srlinux
+      image: ghcr.io/nokia/srlinux
+      startup-config: config/leaf1.cfg
+    leaf2:
+      kind: nokia_srlinux
+      image: ghcr.io/nokia/srlinux
+      startup-config: config/leaf2.cfg
