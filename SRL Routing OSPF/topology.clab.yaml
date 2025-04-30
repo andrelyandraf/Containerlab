@@ -1,16 +1,12 @@
-name: LAYER2EVPN 
+name: SRL OSPF
 
 topology:
   nodes:
-    spine:
+    SW01:
       kind: nokia_srlinux
       image: ghcr.io/nokia/srlinux
-      startup-config: config/spine.cfg
-    leaf1:
+      startup-config: config/sw01.cfg
+    SW02:
       kind: nokia_srlinux
       image: ghcr.io/nokia/srlinux
-      startup-config: config/leaf1.cfg
-    leaf2:
-      kind: nokia_srlinux
-      image: ghcr.io/nokia/srlinux
-      startup-config: config/leaf2.cfg
+      startup-config: config/sw02.cfg
