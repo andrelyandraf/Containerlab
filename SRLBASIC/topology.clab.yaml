@@ -1,0 +1,23 @@
+name: srlbasic
+
+topology:
+  nodes:
+    SW01:
+      kind: nokia_srlinux
+      image: ghcr.io/nokia/srlinux
+      startup-config: config/sw01.cfg
+    SW02:
+      kind: nokia_srlinux
+      image: ghcr.io/nokia/srlinux
+      startup-config: config/sw02.cfg
+    n1:
+      kind: linux
+      image: alpine:latest
+    n2:
+      kind: linux
+      image: alpine:latest
+  links:
+      - endpoints: ["SW01:e1-1", "SW02:e1-1"]
+      - endpoints: ["SW01:e1-2", "n1:eth1"]
+      - endpoints: ["SW02:e1-2", "n2:eth1"]
+
