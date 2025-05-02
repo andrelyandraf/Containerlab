@@ -3,7 +3,7 @@ name: evpn-mh
 topology:
   kinds:
     srl:
-      image: ghcr.io/nokia/srlinux:23.7.1
+      image: ghcr.io/nokia/srlinux
     linux:
       image: ghcr.io/srl-labs/alpine:latest
 
@@ -50,3 +50,4 @@ topology:
     - endpoints: ["ce2:eth1", "leaf3:e1-1"]
     - endpoints: ["ce2:eth2", "leaf3:e1-2"]
     - endpoints: ["ce2:eth3", "leaf3:e1-3"]
+
