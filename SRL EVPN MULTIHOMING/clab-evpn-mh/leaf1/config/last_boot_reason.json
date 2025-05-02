@@ -1,8 +1,0 @@
-{
- "active_serial_number": "Sim Serial No.",
- "chassis_serial_number": "Sim Serial No.",
- "last_boot_reason": "REASON_UNSET",
- "standby_ready": false,
- "file_written_at_unix_time": "2025-04-30T03:13:10.303Z",
- "file_written_at_unix_time_ns": "1745982790303831196"
-}
