@@ -1,0 +1,100 @@
+{
+  "name": "sonic01",
+  "type": "clab",
+  "clab": {
+    "config": {
+      "prefix": "clab",
+      "mgmt": {
+        "network": "clab",
+        "bridge": "br-77eea4545c05",
+        "ipv4-subnet": "172.20.20.0/24",
+        "ipv4-gw": "172.20.20.1",
+        "ipv6-subnet": "3fff:172:20:20::/64",
+        "ipv6-gw": "3fff:172:20:20::1",
+        "mtu": 1500,
+        "external-access": true
+      }
+    }
+  },
+  "ssh-pub-keys": [],
+  "nodes": {
+    "router01": {
+      "index": "0",
+      "shortname": "router01",
+      "longname": "clab-sonic01-router01",
+      "fqdn": "router01.sonic01.io",
+      "group": "",
+      "labdir": "/home/psi-admin/Github/Containerlab/Sonic Basic/clab-sonic01/router01",
+      "kind": "arista_ceos",
+      "image": "ceos:4.29.10M",
+      "mgmt-net": "",
+      "mgmt-intf": "Management0",
+      "mgmt-ipv4-address": "172.20.20.2",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::2",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "00:1c:73:18:21:d4",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-77eea4545c05",
+        "clab-node-group": "",
+        "clab-node-kind": "arista_ceos",
+        "clab-node-lab-dir": "/home/psi-admin/Github/Containerlab/Sonic Basic/clab-sonic01/router01",
+        "clab-node-longname": "clab-sonic01-router01",
+        "clab-node-name": "router01",
+        "clab-node-type": "",
+        "clab-owner": "psi-admin",
+        "clab-topo-file": "/home/psi-admin/Github/Containerlab/Sonic Basic/topology.clab.yaml",
+        "containerlab": "sonic01"
+      },
+      "port-bindings": [
+      ]
+    },
+    "sonic": {
+      "index": "1",
+      "shortname": "sonic",
+      "longname": "clab-sonic01-sonic",
+      "fqdn": "sonic.sonic01.io",
+      "group": "",
+      "labdir": "/home/psi-admin/Github/Containerlab/Sonic Basic/clab-sonic01/sonic",
+      "kind": "sonic-vs",
+      "image": "sonic:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "",
+      "mgmt-ipv4-prefix-length": 0,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-77eea4545c05",
+        "clab-node-group": "",
+        "clab-node-kind": "sonic-vs",
+        "clab-node-lab-dir": "/home/psi-admin/Github/Containerlab/Sonic Basic/clab-sonic01/sonic",
+        "clab-node-longname": "clab-sonic01-sonic",
+        "clab-node-name": "sonic",
+        "clab-node-type": "",
+        "clab-owner": "psi-admin",
+        "clab-topo-file": "/home/psi-admin/Github/Containerlab/Sonic Basic/topology.clab.yaml",
+        "containerlab": "sonic01"
+      },
+      "port-bindings": [
+      ]
+    }
+  },
+  "links": [
+    {
+      "a": {
+        "node": "router01",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:0a:7d:1d",
+        "peer": "z"
+      },
+      "z": {
+        "node": "sonic",
+        "interface": "eth1",
+        "mac": "aa:c1:ab:05:00:40",
+        "peer": "a"
+      }
+    }
+  ]
+}

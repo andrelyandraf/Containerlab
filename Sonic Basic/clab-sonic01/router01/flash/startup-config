@@ -1,0 +1,37 @@
+! Startup-config last modified at Thu May  8 09:25:51 2025 by root
+! device: router01 (cEOSLab, EOS-4.29.10M-39454178.42910M (engineering build))
+!
+no aaa root
+!
+username admin privilege 15 role network-admin secret sha512 $6$2Ahvb6eKTiTOCqNq$cMVH9UxKs/oPBGtUT7txbHYeDSFrF5.9SyKlcwhqlmUvY5AeoZ4OZ6Hf8mDj3uIwY7pxrYgqHh08eUskvyk2L0
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model multi-agent
+!
+hostname router01
+!
+spanning-tree mode mstp
+!
+management api http-commands
+   no shutdown
+!
+management api gnmi
+   transport grpc default
+!
+management api netconf
+   transport ssh default
+!
+interface Ethernet1
+!
+interface Management0
+   ip address 172.20.20.2/24
+   ipv6 address 3fff:172:20:20::2/64
+!
+no ip routing
+!
+ip route 0.0.0.0/0 172.20.20.1
+!
+ipv6 route ::/0 3fff:172:20:20::1
+!
+end

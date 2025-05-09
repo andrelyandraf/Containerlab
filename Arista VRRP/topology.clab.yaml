@@ -11,9 +11,15 @@ topology:
     ce_sw:
       kind: arista_ceos
       image: ceos:4.29.10M
+    server:
+      kind: linux
+      image: alpine:latest
 
   links:
     - endpoints: ["ceos_sw01:eth1", "ceos_sw02:eth1"]
     - endpoints: ["ceos_sw01:eth2", "ceos_sw02:eth2"]
     - endpoints: ["ce_sw:eth1", "ceos_sw01:eth5"]
     - endpoints: ["ce_sw:eth2", "ceos_sw02:eth5"]
+    - endpoints: ["server:eth1", "ceos_sw01:eth10"]
+    - endpoints: ["server:eth2", "ceos_sw02:eth10"]
+

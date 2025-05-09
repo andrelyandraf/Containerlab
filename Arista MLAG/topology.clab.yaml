@@ -2,18 +2,63 @@ name: ARISTA-MLAG-BASIC
 
 topology:
   nodes:
-    ceos_sw01:
+    mlag01:
       kind: arista_ceos
       image: ceos:4.29.10M
-    ceos_sw02:
+      labels:
+        graph-posX: "0"
+        graph-posY: "0"
+        graph-icon: router
+        graph-groupLabelPos: bottom-center
+    mlag02:
       kind: arista_ceos
       image: ceos:4.29.10M
-    ce_sw:
+      labels:
+        graph-posX: "0"
+        graph-posY: "0"
+        graph-icon: router
+        graph-groupLabelPos: bottom-center
+    sw01:
       kind: arista_ceos
       image: ceos:4.29.10M
+      labels:
+        graph-posX: "0"
+        graph-posY: "0"
+        graph-icon: router
+        graph-groupLabelPos: bottom-center
+    server:
+      kind: linux
+      image: alpine:latest
+      labels:
+        graph-posX: "0"
+        graph-posY: "0"
+        graph-icon: router
+        graph-groupLabelPos: bottom-center
+    router01:
+      kind: arista_ceos
+      image: ceos:4.29.10M
+      labels:
+        graph-posX: "0"
+        graph-posY: "0"
+        graph-icon: router
+        graph-groupLabelPos: bottom-center
+    graphite:
+      kind: linux
+      image: netreplica/graphite
+      env:
+        HOST_CONNECTION: ${SSH_CONNECTION}
+      binds:
+        - __clabDir__/topology-data.json:/htdocs/default/default.json:ro
+        - __clabDir__/ansible-inventory.yml:/htdocs/lab/default/ansible-inventory.yml:ro
+      ports:
+        - 8080:80
+      exec:
+        - sh -c 'graphite_motd.sh 8080'
+      labels:
+        graph-hide: yes
 
   links:
-    - endpoints: ["ceos_sw01:eth1", "ceos_sw02:eth1"]
-    - endpoints: ["ceos_sw01:eth2", "ceos_sw02:eth2"]
-    - endpoints: ["ce_sw:eth1", "ceos_sw01:eth5"]
-    - endpoints: ["ce_sw:eth2", "ceos_sw02:eth5"]
+    - endpoints: [ mlag01:eth1, mlag02:eth1 ]
+    - endpoints: [ mlag01:eth2, mlag02:eth2 ]
+    - endpoints: [ sw01:eth1, mlag01:eth5 ]
+    - endpoints: [ sw01:eth2, mlag02:eth5 ]

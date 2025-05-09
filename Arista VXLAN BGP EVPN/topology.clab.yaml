@@ -1,0 +1,63 @@
+name: Arista_ospf
+
+topology:
+  nodes:
+    spine01:
+      kind: arista_ceos
+      image: ceos:4.29.10M
+      #startup-config: config/ceos_sw01.cfg
+    spine02:
+      kind: arista_ceos
+      image: ceos:4.29.10M
+      #startup-config: config/ceos_sw01.cfg
+    leaf01:
+      kind: arista_ceos
+      image: ceos:4.29.10M
+      #startup-config: config/ceos_sw01.cfg
+    leaf02:
+      kind: arista_ceos
+      image: ceos:4.29.10M
+      #startup-config: config/ceos_sw01.cfg
+    leaf03:
+      kind: arista_ceos
+      image: ceos:4.29.10M
+      #startup-config: config/ceos_sw01.cfg
+    leaf04:
+      kind: arista_ceos
+      image: ceos:4.29.10M
+      #startup-config: config/ceos_sw01.cfg
+    sw01:
+      kind: arista_ceos
+      image: ceos:4.29.10M
+    sw02:
+      kind: arista_ceos
+      image: ceos:4.29.10M
+    sw03:
+      kind: arista_ceos
+      image: ceos:4.29.10M
+    router01:
+      kind: arista_ceos
+      image: ceos:4.29.10M
+    server01:
+      kind: linux
+      image: alpine:latest
+
+  links:
+    - endpoints: ["spine01:eth1", "leaf01:eth1"] #SPINE LEAF
+    - endpoints: ["spine01:eth2", "leaf02:eth1"]
+    - endpoints: ["spine01:eth3", "leaf03:eth1"]
+    - endpoints: ["spine01:eth4", "leaf04:eth1"]
+    - endpoints: ["spine02:eth1", "leaf01:eth2"]
+    - endpoints: ["spine02:eth2", "leaf02:eth2"]
+    - endpoints: ["spine02:eth3", "leaf03:eth2"]
+    - endpoints: ["spine02:eth4", "leaf04:eth2"]
+    - endpoints: ["leaf01:eth20", "leaf02:eth20"] #PEERLINK
+    - endpoints: ["leaf01:eth21", "leaf02:eth21"]
+    - endpoints: ["router01:eth1", "leaf01:eth3"] # Link_TO_Router
+    - endpoints: ["router01:eth2", "leaf02:eth3"]
+    - endpoints: ["sw01:eth1", "leaf01:eth4"] # Link_TO_SW01
+    - endpoints: ["sw01:eth2", "leaf02:eth4"]
+    - endpoints: ["server01:eth1", "leaf01:eth5"] # Link_TO_server01
+    - endpoints: ["server01:eth2", "leaf02:eth5"]
+    - endpoints: ["sw02:eth1", "leaf03:eth3"] # Link_TO_sw01
+    - endpoints: ["sw03:eth2", "leaf04:eth3"] # Link_TO_sw02

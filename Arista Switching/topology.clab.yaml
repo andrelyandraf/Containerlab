@@ -1,0 +1,27 @@
+name: ARISTA-L2-Switch
+
+topology:
+  nodes:
+    sw01:
+      kind: arista_ceos
+      image: ceos:4.34.0F
+    sw02:
+      kind: arista_ceos
+      image: ceos:4.34.0F
+    sw03:
+      kind: arista_ceos
+      image: ceos:4.34.0F
+    ep1:
+      kind: linux
+      image: alpine:latest
+    ep2:
+      kind: linux
+      image: alpine:latest
+
+  links:
+    - endpoints: ["sw01:eth1", "sw02:eth1"]
+    - endpoints: ["sw01:eth2", "sw03:eth1"]
+    - endpoints: ["sw02:eth20", "sw03:eth20"]
+    - endpoints: ["sw02:eth21", "sw03:eth21"]
+    - endpoints: ["sw02:eth10", "ep1:eth1"]
+    - endpoints: ["sw03:eth10", "ep2:eth1"]

@@ -1,0 +1,11 @@
+---
+router01:
+    username: admin
+    password: admin
+    platform: arista_ceos
+    hostname: 172.20.20.2
+sonic:
+    username: 
+    password: 
+    platform: sonic-vs
+    hostname: 

@@ -1,0 +1,108 @@
+name: Arista_BFD
+
+topology:
+  kinds:
+    arista_ceos:
+      image: ceos:4.29.10M
+    linux:
+      image: alpine:latest
+
+  nodes:
+    spine01:
+      kind: arista_ceos
+      #startup-config: configs/spine01.cfg
+      labels:
+        graph-level: 1
+        graph-posX: "-5"
+        graph-posY: "-35"
+        graph-icon: spine
+    spine02:
+      kind: arista_ceos
+      labels:
+        graph-level: 1
+        graph-posX: "-55"
+        graph-posY: "-35"
+        graph-icon: spine
+    leaf01:
+      kind: arista_ceos
+      labels:
+        graph-level: 2
+        graph-posX: "-125"
+        graph-posY: "15"
+        graph-icon: leaf
+    leaf02:
+      kind: arista_ceos
+      labels:
+        graph-level: 2
+        graph-posX: "-55"
+        graph-posY: "15"
+        graph-icon: leaf
+    leaf03:
+      kind: arista_ceos
+      labels:
+        graph-level: 2
+        graph-posX: "25"
+        graph-posY: "15"
+        graph-icon: leaf
+    leaf04:
+      kind: arista_ceos
+      labels:
+        graph-level: 2
+        graph-posX: "75"
+        graph-posY: "15"
+        graph-icon: leaf
+    sw01:
+      kind: arista_ceos
+      labels:
+        graph-level: 3
+        graph-posX: "-35"
+        graph-posY: "65"
+        graph-icon: switch
+    sw02:
+      kind: arista_ceos
+      labels:
+        graph-level: 3
+        graph-posX: "25"
+        graph-posY: "65"
+        graph-icon: switch
+    sw03:
+      kind: arista_ceos
+      labels:
+        graph-level: 3
+        graph-posX: "75"
+        graph-posY: "65"
+        graph-icon: switch
+    router01:
+      kind: arista_ceos
+      labels:
+        graph-level: 3
+        graph-posX: "-105"
+        graph-posY: "65"
+        graph-icon: router
+    server01:
+      kind: linux
+      labels:
+        graph-level: 3
+        graph-posX: "-165"
+        graph-posY: "65"
+        graph-icon: server
+
+  links:
+    - endpoints: [ spine01:eth1, leaf01:eth1 ] #SPINE LEAF
+    - endpoints: [ spine01:eth2, leaf02:eth1 ]
+    - endpoints: [ spine01:eth3, leaf03:eth1 ]
+    - endpoints: [ spine01:eth4, leaf04:eth1 ]
+    - endpoints: [ spine02:eth1, leaf01:eth2 ]
+    - endpoints: [ spine02:eth2, leaf02:eth2 ]
+    - endpoints: [ spine02:eth3, leaf03:eth2 ]
+    - endpoints: [ spine02:eth4, leaf04:eth2 ]
+    - endpoints: [ leaf01:eth20, leaf02:eth20 ] #PEERLINK
+    - endpoints: [ leaf01:eth21, leaf02:eth21 ]
+    - endpoints: [ router01:eth1, leaf01:eth3 ] # Link_TO_Router
+    - endpoints: [ router01:eth2, leaf02:eth3 ]
+    - endpoints: [ sw01:eth1, leaf01:eth4 ] # Link_TO_SW01
+    - endpoints: [ sw01:eth2, leaf02:eth4 ]
+    - endpoints: [ server01:eth1, leaf01:eth5 ] # Link_TO_server01
+    - endpoints: [ server01:eth2, leaf02:eth5 ]
+    - endpoints: [ sw02:eth1, leaf03:eth3 ] # Link_TO_sw01
+    - endpoints: [ sw03:eth2, leaf04:eth3 ] # Link_TO_sw02

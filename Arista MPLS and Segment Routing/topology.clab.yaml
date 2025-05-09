@@ -1,0 +1,48 @@
+name: Arista_ospf
+
+topology:
+  nodes:
+    pe01:
+      kind: arista_ceos
+      image: ceos:4.29.10M
+      #startup-config: config/ceos_sw01.cfg
+    pe02:
+      kind: arista_ceos
+      image: ceos:4.29.10M
+      #startup-config: config/ceos_sw01.cfg
+    p01:
+      kind: arista_ceos
+      image: ceos:4.29.10M
+      #startup-config: config/ceos_sw01.cfg
+    p02:
+      kind: arista_ceos
+      image: ceos:4.29.10M
+      #startup-config: config/ceos_sw01.cfg
+    p03:
+      kind: arista_ceos
+      image: ceos:4.29.10M
+      #startup-config: config/ceos_sw01.cfg
+    sw01:
+      kind: arista_ceos
+      image: ceos:4.29.10M
+      #startup-config: config/ceos_sw01.cfg
+    sw02:
+      kind: arista_ceos
+      image: ceos:4.29.10M
+    sw03:
+      kind: arista_ceos
+      image: ceos:4.29.10M
+    sw04:
+      kind: arista_ceos
+      image: ceos:4.29.10M
+
+  links:
+    - endpoints: ["pe01:eth1", "p01:eth1"] #SPINE LEAF
+    - endpoints: ["pe01:eth2", "p02:eth1"]
+    - endpoints: ["pe02:eth1", "p01:eth2"]
+    - endpoints: ["pe02:eth2", "p03:eth1"]
+    - endpoints: ["p02:eth24", "p03:eth24"]
+    - endpoints: ["sw01:eth1", "pe01:eth10"]
+    - endpoints: ["sw02:eth1", "pe01:eth20"]
+    - endpoints: ["sw03:eth1", "pe02:eth10"]
+    - endpoints: ["sw04:eth1", "pe02:eth20"] #PEERLINK
