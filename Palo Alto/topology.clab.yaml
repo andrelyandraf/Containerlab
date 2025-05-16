@@ -1,0 +1,15 @@
+name: palolab
+topology:
+  nodes:
+    palo:
+      kind: paloalto_panos
+      image: vrnetlab/paloalto_pa-vm:10.1.0
+      startup-config: configs/palo.conf
+      ports: 
+      - 8080:443
+      - 8081:80
+    n2:
+      kind: linux
+      image: alpine:latest
+  links:
+    - endpoints: ["palo:Ethernet1/1", "n2:eth1"]
