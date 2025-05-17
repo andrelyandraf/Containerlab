@@ -1,0 +1,10 @@
+name: Arista_ospf
+
+topology:
+  nodes:
+    Arista:
+      kind: arista_ceos
+      image: ceos:4.29.10M
+      #startup-config: config/ceos_sw01.cfg
+  links:
+    - endpoints: ["pe01:eth1", "p01:eth1"] #SPINE LEAF

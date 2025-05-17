@@ -5,18 +5,28 @@ topology:
     sw01:
       kind: arista_ceos
       image: ceos:4.34.0F
+      ports:
+      - 30001:22
     sw02:
       kind: arista_ceos
       image: ceos:4.34.0F
+      ports:
+      - 30002:22
     sw03:
       kind: arista_ceos
       image: ceos:4.34.0F
+      ports:
+      - 30003:22
     ep1:
       kind: linux
       image: alpine:latest
+      ports: 
+      - 30010:22
     ep2:
       kind: linux
       image: alpine:latest
+      ports:
+      - 30011:22
 
   links:
     - endpoints: ["sw01:eth1", "sw02:eth1"]

@@ -1,0 +1,19 @@
+name: mikrotik-basic
+
+topology:
+  kinds:
+    mikrotik_ros:
+      image: vrnetlab/mikrotik_routeros:7.16.2
+    linux:
+      image: alpine:latest
+
+  nodes:
+    router1:
+      kinds: mikrotik_ros
+      #startup-config: config/ceos_sw01.cfg
+    router2:
+      kinds: mikrotik_ros
+
+    
+  links:
+    - endpoints: ["router1:eth1", "router2:eth1"]

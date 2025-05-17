@@ -1,10 +1,14 @@
 name: ARISTA-MLAG-BASIC
 
 topology:
+  kinds:
+    arista_ceos:
+      image: ceos:4.29.10M
+    linux:
+      image: alpine:latest
   nodes:
     mlag01:
       kind: arista_ceos
-      image: ceos:4.29.10M
       labels:
         graph-posX: "0"
         graph-posY: "0"
@@ -12,7 +16,6 @@ topology:
         graph-groupLabelPos: bottom-center
     mlag02:
       kind: arista_ceos
-      image: ceos:4.29.10M
       labels:
         graph-posX: "0"
         graph-posY: "0"
@@ -20,7 +23,6 @@ topology:
         graph-groupLabelPos: bottom-center
     sw01:
       kind: arista_ceos
-      image: ceos:4.29.10M
       labels:
         graph-posX: "0"
         graph-posY: "0"
@@ -28,7 +30,6 @@ topology:
         graph-groupLabelPos: bottom-center
     server:
       kind: linux
-      image: alpine:latest
       labels:
         graph-posX: "0"
         graph-posY: "0"
@@ -36,7 +37,6 @@ topology:
         graph-groupLabelPos: bottom-center
     router01:
       kind: arista_ceos
-      image: ceos:4.29.10M
       labels:
         graph-posX: "0"
         graph-posY: "0"
