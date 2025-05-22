@@ -1,0 +1,18 @@
+name: Fortigate
+topology:
+  nodes:
+    router01:
+      kind: fortinet_fortigate
+      image: vrnetlab/vr-fortios:fortios-6.4.1
+      ports: 
+      - 8181:80
+      env:
+        QEMU_MEMORY: 2048
+        QEMU_SMP: 1
+    ixia:
+      kind: keysight_ixia-c-one
+      image: ghcr.io/open-traffic-generator/ixia-c-one:1.28.0-45
+      ports: 
+      - 8182:8443
+  links:
+    - endpoints: ["router01:eth2", "ixia:eth0"]

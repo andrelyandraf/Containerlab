@@ -1,10 +1,12 @@
 name: Arista_ospf
 
 topology:
+  kinds:
+    arista_ceos:
+      image: ceos:4.34.0F
   nodes:
     pe01:
       kind: arista_ceos
-      image: ceos:4.29.10M
       labels:
         graph-posX: "5"
         graph-posY: "5"
@@ -12,7 +14,6 @@ topology:
         graph-groupLabelPos: bottom-center
     pe02:
       kind: arista_ceos
-      image: ceos:4.29.10M
       labels:
         graph-posX: "5"
         graph-posY: "5"
@@ -20,7 +21,6 @@ topology:
         graph-groupLabelPos: bottom-center
     p01:
       kind: arista_ceos
-      image: ceos:4.29.10M
       labels:
         graph-posX: "5"
         graph-posY: "5"
@@ -28,7 +28,6 @@ topology:
         graph-groupLabelPos: bottom-center
     p02:
       kind: arista_ceos
-      image: ceos:4.29.10M
       labels:
         graph-posX: "5"
         graph-posY: "5"
@@ -36,7 +35,6 @@ topology:
         graph-groupLabelPos: bottom-center
     p03:
       kind: arista_ceos
-      image: ceos:4.29.10M
       labels:
         graph-posX: "5"
         graph-posY: "5"
@@ -44,7 +42,6 @@ topology:
         graph-groupLabelPos: bottom-center
     sw01:
       kind: arista_ceos
-      image: ceos:4.29.10M
       labels:
         graph-posX: "5"
         graph-posY: "5"
@@ -52,7 +49,6 @@ topology:
         graph-groupLabelPos: bottom-center
     sw02:
       kind: arista_ceos
-      image: ceos:4.29.10M
       labels:
         graph-posX: "5"
         graph-posY: "5"
@@ -60,7 +56,6 @@ topology:
         graph-groupLabelPos: bottom-center
     sw03:
       kind: arista_ceos
-      image: ceos:4.29.10M
       labels:
         graph-posX: "5"
         graph-posY: "5"

@@ -1,40 +1,34 @@
 name: Arista_ospf
 
 topology:
+  kinds:
+    arista_ceos:
+      image: ceos:4.34.0F
   nodes:
     pe01:
       kind: arista_ceos
-      image: ceos:4.29.10M
       #startup-config: config/ceos_sw01.cfg
     pe02:
       kind: arista_ceos
-      image: ceos:4.29.10M
       #startup-config: config/ceos_sw01.cfg
     p01:
       kind: arista_ceos
-      image: ceos:4.29.10M
       #startup-config: config/ceos_sw01.cfg
     p02:
       kind: arista_ceos
-      image: ceos:4.29.10M
       #startup-config: config/ceos_sw01.cfg
     p03:
       kind: arista_ceos
-      image: ceos:4.29.10M
       #startup-config: config/ceos_sw01.cfg
     sw01:
       kind: arista_ceos
-      image: ceos:4.29.10M
       #startup-config: config/ceos_sw01.cfg
     sw02:
       kind: arista_ceos
-      image: ceos:4.29.10M
     sw03:
       kind: arista_ceos
-      image: ceos:4.29.10M
     sw04:
       kind: arista_ceos
-      image: ceos:4.29.10M
 
   links:
     - endpoints: ["pe01:eth1", "p01:eth1"] #SPINE LEAF

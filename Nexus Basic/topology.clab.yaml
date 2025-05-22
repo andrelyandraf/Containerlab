@@ -1,0 +1,9 @@
+name: Nexus_BASIC
+topology:
+  nodes:
+    router01:
+      kind: cisco_n9kv
+      image: vrnetlab/cisco_n9kv:9.3.1
+      env:
+        QEMU_MEMORY: 6144 # N9kv-lite requires minimum 6GB memory
+        QEMU_SMP: 2 # N9kv-lite requires minimum 2 CPUs

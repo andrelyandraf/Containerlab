@@ -1,0 +1,47 @@
+name: GI-LAB
+topology:
+  nodes:
+    FW01:
+      kind: fortinet_fortigate
+      image: vrnetlab/vr-fortios:fortios-6.4.1
+      ports: 
+      - 8181:80
+    FW02:
+      kind: fortinet_fortigate
+      image: vrnetlab/vr-fortios:fortios-6.4.1
+      ports: 
+      - 8182:80
+    SWISP:
+      kind: arista_ceos
+      image: ceos:4.34.0F
+    SWDMZ:
+      kind: arista_ceos
+      image: ceos:4.34.0F
+    SWVDX01:
+      kind: arista_ceos
+      image: ceos:4.34.0F
+    SWVDX02:
+      kind: arista_ceos
+      image: ceos:4.34.0F
+    PFsense:
+      kind: arista_ceos
+      image: ceos:4.34.0F
+    ccr01:
+      kind: mikrotik_ros
+      image: vrnetlab/mikrotik_routeros:7.16.2
+      #startup-config: config/ceos_sw01.cfg
+    ccr02:
+      kind: mikrotik_ros
+      image: vrnetlab/mikrotik_routeros:7.16.2
+    ixia:
+      kind: keysight_ixia-c-one
+      image: ghcr.io/open-traffic-generator/ixia-c-one:1.28.0-45
+      ports: 
+      - 8182:8443
+  links:
+    - endpoints: ["FW01:eth2", "SWISP:eth0"]
+    - endpoints: ["FW02:eth2", "SWISP:eth1"]
+    - endpoints: ["CCR01:eth1", "VDX01:eth1"]
+    - endpoints: ["CCR01:eth2", "VDX02:eth2"]
+    - endpoints: ["CCR02:eth1", "VDX01:eth1"]
+    - endpoints: ["CCR02:eth2", "VDX02:eth2"]

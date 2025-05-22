@@ -5,9 +5,13 @@ topology:
     router1:
       kind: mikrotik_ros
       image: vrnetlab/mikrotik_routeros:7.16.2
+      ports: 
+      - 30001:8291
       #startup-config: config/ceos_sw01.cfg
     router2:
       kind: mikrotik_ros
       image: vrnetlab/mikrotik_routeros:7.16.2
+      ports: 
+      - 30002:8291
   links:
     - endpoints: ["router1:eth1", "router2:eth1"]

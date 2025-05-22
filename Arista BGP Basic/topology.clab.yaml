@@ -1,0 +1,37 @@
+name: ARISTA-BGP-BASIC
+
+topology:
+  kinds:
+    arista_ceos:
+      image: ceos:4.34.0F
+    linux:
+      image: alpine:latest
+  nodes:
+    RTR01:
+      kind: arista_ceos
+      #startup-config: configs/rtr01.cfg
+      mgmt-ipv4: 172.16.20.1
+      labels:
+        graph-posX: "-25"
+        graph-posY: "35"
+        graph-icon: router
+        graph-groupLabelPos: bottom-center
+    RTR02:
+      kind: arista_ceos
+      image: default-image
+      labels:
+        graph-posX: "15"
+        graph-posY: "5"
+        graph-icon: router
+        graph-groupLabelPos: bottom-center
+    RTR03:
+      kind: arista_ceos
+      image: default-image
+      labels:
+        graph-posX: "55"
+        graph-posY: "35"
+        graph-icon: router
+        graph-groupLabelPos: bottom-center
+  links:
+    - endpoints: [ RTR01:eth1, RTR02:eth1 ]
+    - endpoints: [ RTR02:eth2, RTR03:eth1 ]

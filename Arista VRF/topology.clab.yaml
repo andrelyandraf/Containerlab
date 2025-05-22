@@ -1,19 +1,29 @@
 name: ARISTA-MLAG-BASIC
 
 topology:
+  kinds:
+    arista_ceos:
+      image: ceos:4.34.0F
+    linux:
+      image: alpine:latest
   nodes:
     ceos_sw01:
       kind: arista_ceos
-      image: ceos:4.29.10M
+      mgmt-ipv4: 172.16.20.1
+      ports:
+        - 30001:22
     ceos_sw02:
       kind: arista_ceos
-      image: ceos:4.29.10M
+      mgmt-ipv4: 172.16.20.2
+      ports:
+        - 30002:22
     ce_sw:
       kind: arista_ceos
-      image: ceos:4.29.10M
+      mgmt-ipv4: 172.16.20.3
+      ports:
+        - 30003:22
     server:
       kind: linux
-      image: alpine:latest
 
   links:
     - endpoints: ["ceos_sw01:eth1", "ceos_sw02:eth1"]

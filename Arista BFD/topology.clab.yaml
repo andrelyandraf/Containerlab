@@ -3,7 +3,7 @@ name: Arista_BFD
 topology:
   kinds:
     arista_ceos:
-      image: ceos:4.29.10M
+      image: ceos:4.34.0F
     linux:
       image: alpine:latest
 
@@ -11,6 +11,9 @@ topology:
     spine01:
       kind: arista_ceos
       #startup-config: configs/spine01.cfg
+      mgmt-ipv4: 172.16.20.1
+      ports:
+        - 30001:22
       labels:
         graph-level: 1
         graph-posX: "-5"
@@ -18,6 +21,10 @@ topology:
         graph-icon: spine
     spine02:
       kind: arista_ceos
+      #startup-config: configs/spine02.cfg
+      mgmt-ipv4: 172.16.20.2
+      ports:
+        - 30002:22
       labels:
         graph-level: 1
         graph-posX: "-55"
@@ -25,6 +32,10 @@ topology:
         graph-icon: spine
     leaf01:
       kind: arista_ceos
+      #startup-config: configs/leaf01.cfg
+      mgmt-ipv4: 172.16.20.11
+      ports:
+        - 30011:22
       labels:
         graph-level: 2
         graph-posX: "-125"
@@ -32,6 +43,9 @@ topology:
         graph-icon: leaf
     leaf02:
       kind: arista_ceos
+      mgmt-ipv4: 172.16.20.12
+      ports:
+        - 30012:22
       labels:
         graph-level: 2
         graph-posX: "-55"
@@ -39,6 +53,9 @@ topology:
         graph-icon: leaf
     leaf03:
       kind: arista_ceos
+      mgmt-ipv4: 172.16.20.13
+      ports:
+        - 30013:22
       labels:
         graph-level: 2
         graph-posX: "25"
@@ -46,6 +63,9 @@ topology:
         graph-icon: leaf
     leaf04:
       kind: arista_ceos
+      mgmt-ipv4: 172.16.20.14
+      ports:
+        - 30014:22
       labels:
         graph-level: 2
         graph-posX: "75"

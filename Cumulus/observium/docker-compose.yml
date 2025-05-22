@@ -1,0 +1,26 @@
+# Docker compose file for Observium
+
+services:
+  observium:
+    image: uberchuckie/observium
+    container_name: observium
+    restart: unless-stopped
+    volumes:
+      - ./config:/config
+      - ./logs:/opt/observium/logs
+      - ./rrd:/opt/observium/rrd
+    environment:
+      - TZ=America/Halifax
+      - OBSERVIUM_ADMIN_USER=admin
+      - OBSERVIUM_ADMIN_PASS=passw0rd
+    ports:
+      - "8888:8668"
+      - "514:514/udp"
+    networks:
+      clab:
+        ipv4_address: 172.20.20.200
+
+networks:
+  clab:
+      driver: bridge
+      external: true

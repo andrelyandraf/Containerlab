@@ -1,0 +1,11 @@
+name: IOL_L3
+topology:
+  nodes:
+    RT01:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:17.12.01
+    RT02:
+      kind: cisco_iol
+      image: vrnetlab/cisco_iol:17.12.01
+  links:
+    - endpoints: ["RT01:Ethernet0/1", "RT02:Ethernet0/1"] 

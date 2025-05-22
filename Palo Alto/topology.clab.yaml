@@ -3,7 +3,7 @@ topology:
   nodes:
     palo:
       kind: paloalto_panos
-      image: vrnetlab/paloalto_pa-vm:10.1.0
+      image: vrnetlab/paloalto_pa-vm:11.0.0
       startup-config: configs/palo.conf
       ports: 
       - 8080:443

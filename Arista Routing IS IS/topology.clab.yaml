@@ -1,46 +1,40 @@
 name: Arista_ospf
 
 topology:
+  kinds:
+    arista_ceos:
+      image: ceos:4.34.0F
+    linux:
+      image: alpine:latest
   nodes:
     spine01:
       kind: arista_ceos
-      image: ceos:4.29.10M
       #startup-config: config/ceos_sw01.cfg
     spine02:
       kind: arista_ceos
-      image: ceos:4.29.10M
       #startup-config: config/ceos_sw01.cfg
     leaf01:
       kind: arista_ceos
-      image: ceos:4.29.10M
       #startup-config: config/ceos_sw01.cfg
     leaf02:
       kind: arista_ceos
-      image: ceos:4.29.10M
       #startup-config: config/ceos_sw01.cfg
     leaf03:
       kind: arista_ceos
-      image: ceos:4.29.10M
       #startup-config: config/ceos_sw01.cfg
     leaf04:
       kind: arista_ceos
-      image: ceos:4.29.10M
       #startup-config: config/ceos_sw01.cfg
     sw01:
       kind: arista_ceos
-      image: ceos:4.29.10M
     sw02:
       kind: arista_ceos
-      image: ceos:4.29.10M
     sw03:
       kind: arista_ceos
-      image: ceos:4.29.10M
     router01:
       kind: arista_ceos
-      image: ceos:4.29.10M
     server01:
       kind: linux
-      image: alpine:latest
 
   links:
     - endpoints: ["spine01:eth1", "leaf01:eth1"] #SPINE LEAF

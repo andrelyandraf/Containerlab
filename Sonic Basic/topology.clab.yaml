@@ -3,11 +3,11 @@ name: sonic01
 topology:
   nodes:
     sonic:
-      kind: sonic-vs
-      image: sonic:latest
-    router01:
-      kind: arista_ceos
-      image: ceos:4.29.10M
-  
-  links:
-    - endpoints: ["router01:eth1", "sonic:eth1"]
+      kind: sonic-vm
+      image: vrnetlab/sonic_sonic-vs:202305
+    ost:
+      kind: linux
+      image: ostinato/ostinato:v1.3.0-1
+      ports:
+        - 5900:5900/tcp
+        - 7878:7878/tcp

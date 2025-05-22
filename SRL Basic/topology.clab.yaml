@@ -4,16 +4,16 @@ topology:
   nodes:
     srl_spine:
       kind: nokia_srlinux
-      image: ghcr.io/nokia/srlinux
-      startup-config: config/srl_spine.cfg
+      image: ghcr.io/nokia/srlinux:latest
+      #startup-config: config/srl_spine.cfg
     srl_leaf1:
       kind: nokia_srlinux
-      image: ghcr.io/nokia/srlinux
-      startup-config: config/srl_leaf1.cfg
+      image: ghcr.io/nokia/srlinux:latest
+      #startup-config: config/srl_leaf1.cfg
     srl_leaf2:
       kind: nokia_srlinux
-      image: ghcr.io/nokia/srlinux
-      startup-config: config/srl_leaf2.cfg
+      image: ghcr.io/nokia/srlinux:latest
+      #startup-config: config/srl_leaf2.cfg
     n1:
       kind: linux
       image: alpine:latest

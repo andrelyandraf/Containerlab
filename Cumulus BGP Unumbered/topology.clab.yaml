@@ -1,0 +1,39 @@
+name: Cumulus_BGP
+
+# Note: default runtime is ignite
+
+topology:
+  kinds: 
+    cumulus_cvx:
+      image: networkop/cx:5.3.0
+      runtime: docker
+    linux:
+      image: alpine:latest
+  nodes:
+    leaf01:
+      kind: cumulus_cvx
+      group: leaf
+    leaf02:
+      kind: cumulus_cvx
+      group: leaf
+    leaf03:
+      kind: cumulus_cvx
+      group: leaf
+    leaf04:
+      kind: cumulus_cvx
+      group: leaf
+    spine01:
+      kind: cumulus_cvx
+      group: spine
+    spine02:
+      kind: cumulus_cvx
+      group: spine
+  links:
+    - endpoints: ["spine01:swp1", "leaf01:swp1"]
+    - endpoints: ["spine01:swp2", "leaf02:swp1"]
+    - endpoints: ["spine01:swp3", "leaf03:swp1"]
+    - endpoints: ["spine01:swp4", "leaf04:swp1"]
+    - endpoints: ["spine02:swp1", "leaf01:swp2"]
+    - endpoints: ["spine02:swp2", "leaf02:swp2"]
+    - endpoints: ["spine02:swp3", "leaf03:swp2"]
+    - endpoints: ["spine02:swp4", "leaf04:swp2"]
